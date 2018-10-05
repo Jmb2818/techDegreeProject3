@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>description</key>
+		<string>NYC’s first female cabbie gets behind the wheel</string>
+		<key>date</key>
+		<date>1915-01-02T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>The teddy bear debuts</string>
+		<key>date</key>
+		<date>1903-02-16T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>‘Cops’ premieres</string>
+		<key>date</key>
+		<date>1989-03-12T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Pocahontas marries John Rolfe</string>
+		<key>date</key>
+		<date>1614-04-06T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Cinco de Mayo becomes a holiday</string>
+		<key>date</key>
+		<date>1862-05-06T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>NYC’s first female cabbie gets behind the wheel</string>
+		<key>date</key>
+		<date>1915-01-02T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Yosemite is named as the first US national park</string>
+		<key>date</key>
+		<date>1752-06-11T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Evolution is debated in the courtroom</string>
+		<key>date</key>
+		<date>1925-07-11T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>MLK delivers “I Have a Dream” speech</string>
+		<key>date</key>
+		<date>1963-08-29T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>“The Tonight Show” with Johnny Carson premieres</string>
+		<key>date</key>
+		<date>1962-10-02T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Susan B. Anthony casts a vote</string>
+		<key>date</key>
+		<date>1872-11-02T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>George Washington crosses the Delaware</string>
+		<key>date</key>
+		<date>1776-12-26T02:04:13Z</date>
+	</dict>
+</array>
+</plist>
