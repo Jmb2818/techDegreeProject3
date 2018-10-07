@@ -49,11 +49,6 @@
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="firstDownButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2C-WE-YoQ">
                                                 <rect key="frame" x="285" y="0.0" width="40" height="123.5"/>
@@ -62,6 +57,9 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="down_full"/>
                                                 <state key="highlighted" backgroundImage="down_full_selected"/>
+                                                <connections>
+                                                    <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="unx-la-iCj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -95,11 +93,6 @@
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SLt-mL-If6">
                                                 <rect key="frame" x="285" y="0.0" width="40" height="123.5"/>
@@ -111,6 +104,9 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="up_half"/>
                                                         <state key="highlighted" backgroundImage="up_half_selected"/>
+                                                        <connections>
+                                                            <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ssj-vU-Uuy"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="secondDownButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVD-bJ-LJn">
                                                         <rect key="frame" x="0.0" y="62" width="40" height="61.5"/>
@@ -119,6 +115,9 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="down_half"/>
                                                         <state key="highlighted" backgroundImage="down_half_selected"/>
+                                                        <connections>
+                                                            <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aiC-m1-swW"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -159,11 +158,6 @@
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ghf-bF-t0t">
                                                 <rect key="frame" x="285" y="0.0" width="40" height="123.5"/>
@@ -175,6 +169,9 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="up_half"/>
                                                         <state key="highlighted" backgroundImage="up_half_selected"/>
+                                                        <connections>
+                                                            <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KoX-dY-GFt"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="thirdDownButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgV-S0-gDj">
                                                         <rect key="frame" x="0.0" y="62" width="40" height="61.5"/>
@@ -183,6 +180,9 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="down_half"/>
                                                         <state key="highlighted" backgroundImage="down_half_selected"/>
+                                                        <connections>
+                                                            <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ptV-He-b9n"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -230,6 +230,9 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="up_full"/>
                                                 <state key="highlighted" backgroundImage="up_full_selected"/>
+                                                <connections>
+                                                    <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bCl-w5-QIa"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

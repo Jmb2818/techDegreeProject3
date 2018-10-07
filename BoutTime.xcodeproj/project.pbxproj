@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B274677216304A7000C83C6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B274676216304A7000C83C6 /* Event.swift */; };
-		0B27467921631825000C83C6 /* EventPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27467821631825000C83C6 /* EventPool.swift */; };
 		0B63134121659DFD007F76AE /* Events.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B63134021659DFD007F76AE /* Events.plist */; };
 		0B6313432165A76D007F76AE /* PlistConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6313422165A76D007F76AE /* PlistConverter.swift */; };
 		0B6313452165AAED007F76AE /* EventArrayConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6313442165AAED007F76AE /* EventArrayConverter.swift */; };
@@ -22,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		0B274676216304A7000C83C6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		0B27467821631825000C83C6 /* EventPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPool.swift; sourceTree = "<group>"; };
 		0B63134021659DFD007F76AE /* Events.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Events.plist; sourceTree = "<group>"; };
 		0B6313422165A76D007F76AE /* PlistConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConverter.swift; sourceTree = "<group>"; };
 		0B6313442165AAED007F76AE /* EventArrayConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventArrayConverter.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 				0B85B025215C5D830092D29B /* Info.plist */,
 				0B85B02B215C79CF0092D29B /* GameViewController.swift */,
 				0B274676216304A7000C83C6 /* Event.swift */,
-				0B27467821631825000C83C6 /* EventPool.swift */,
 				0B802FDF2164550F00CE0092 /* GameManager.swift */,
 				0B63134021659DFD007F76AE /* Events.plist */,
 				0B6313422165A76D007F76AE /* PlistConverter.swift */,
@@ -156,7 +153,6 @@
 			files = (
 				0B85B02C215C79CF0092D29B /* GameViewController.swift in Sources */,
 				0B274677216304A7000C83C6 /* Event.swift in Sources */,
-				0B27467921631825000C83C6 /* EventPool.swift in Sources */,
 				0B6313432165A76D007F76AE /* PlistConverter.swift in Sources */,
 				0B6313452165AAED007F76AE /* EventArrayConverter.swift in Sources */,
 				0B85B01A215C5D810092D29B /* AppDelegate.swift in Sources */,
