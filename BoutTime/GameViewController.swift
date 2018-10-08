@@ -16,16 +16,24 @@ class GameViewController: UIViewController {
     @IBOutlet weak var fourthLabel: UILabel!
     @IBOutlet weak var roundSuccessButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var firstStackView: UIStackView!
     
     var gameManager = GameManager()
     var countdownSeconds = 60
     var roundTimer = Timer()
     var countdownTimer = Timer()
+    var selectedURL = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       beginRound()
+        beginRound()
+        createTapRecognizer(label: firstLabel)
+        createTapRecognizer(label: secondLabel)
+        createTapRecognizer(label: thirdLabel)
+        createTapRecognizer(label: fourthLabel)
+    
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -78,6 +86,12 @@ class GameViewController: UIViewController {
                 destinationVC.mainViewController = self
             }
         }
+        
+        if segue.identifier == "showWeb" {
+            if let destinationVC = segue.destination as? WebViewController {
+                destinationVC.url = selectedURL
+            }
+        }
     }
     
     func runTimer() {
@@ -94,6 +108,7 @@ class GameViewController: UIViewController {
         countdownSeconds = gameManager.secondsPerRound
         roundSuccessButton.isEnabled = false
         roundSuccessButton.isHidden = true
+        hintLabel.text = "Shake to complete"
         guard let firstEventDescription = gameManager.firstEvent?.attributeDescription(),
             let secondEventDescription = gameManager.secondEvent?.attributeDescription(),
             let thirdEventDescription = gameManager.thirdEvent?.attributeDescription(),
@@ -124,6 +139,25 @@ class GameViewController: UIViewController {
         return orderedEventStrings
     }
     
+    func createTapRecognizer(label: UILabel) {
+        let tapAction = UITapGestureRecognizer(target: self, action: #selector(selectedLabel))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapAction)
+    }
+    
+    @objc func selectedLabel(_ sender: AnyObject) {
+        guard let gestureRecognizer = sender as? UITapGestureRecognizer,
+            let label = gestureRecognizer.view as? UILabel,
+            let selectedEvent = label.attributedText?.string
+            else { return }
+        for event in gameManager.eventPool {
+            if event.attributedDescriptionWithDate().string == selectedEvent {
+                selectedURL = event.url
+                performSegue(withIdentifier: "showWeb", sender: nil)
+            }
+        }
+    }
+    
     @objc func checkAnswers() {
         roundTimer.invalidate()
         countdownTimer.invalidate()
@@ -139,18 +173,13 @@ class GameViewController: UIViewController {
                 
                 return
         }
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.firstLineHeadIndent = 20
-        paragraphStyle.headIndent = 20
-        let attributes = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        firstLabel.attributedText = NSMutableAttributedString(string: "\(firstDescription) - \(gameManager.getDateString(eventDescription: firstDescription))", attributes: attributes)
         
-        secondLabel.attributedText = NSMutableAttributedString(string: "\(secondDescription) - \(gameManager.getDateString(eventDescription: secondDescription))", attributes: attributes)
+        firstLabel.attributedText = gameManager.getDateString(eventDescription: firstDescription)
+        secondLabel.attributedText = gameManager.getDateString(eventDescription: secondDescription)
+        thirdLabel.attributedText = gameManager.getDateString(eventDescription: thirdDescription)
+        fourthLabel.attributedText = gameManager.getDateString(eventDescription: fourthDescription)
         
-        thirdLabel.attributedText = NSMutableAttributedString(string: "\(thirdDescription) - \(gameManager.getDateString(eventDescription: thirdDescription))", attributes: attributes)
-        
-        fourthLabel.attributedText = NSMutableAttributedString(string: "\(fourthDescription) - \(gameManager.getDateString(eventDescription: fourthDescription))", attributes: attributes)
-        
+        hintLabel.text = "Tap events to learn more"
         if isCorrect {
             roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_success"), for: .normal)
             gameManager.roundsCorrect += 1

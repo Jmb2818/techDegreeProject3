@@ -62,14 +62,13 @@ class GameManager {
         chosenEvents.removeAll()
     }
     
-    func getDateString(eventDescription: String) -> String {
-        formatter.dateFormat = "yyyy"
+    func getDateString(eventDescription: String) -> NSMutableAttributedString {
         for event in eventPool {
             if event.eventDescription == eventDescription {
-                return formatter.string(from: event.date)
+                return event.attributedDescriptionWithDate()
             }
         }
-        return ""
+        return NSMutableAttributedString(string: "")
     }
     
     func startOver() {

@@ -285,12 +285,15 @@
                     </view>
                     <connections>
                         <outlet property="firstLabel" destination="wUM-QL-A4T" id="DvT-Ft-fbb"/>
+                        <outlet property="firstStackView" destination="NIc-p6-r06" id="gvi-2R-Anf"/>
                         <outlet property="fourthLabel" destination="O1n-Ir-u1u" id="XbC-AE-xH7"/>
+                        <outlet property="hintLabel" destination="W07-57-c6C" id="eHn-ts-yYD"/>
                         <outlet property="roundSuccessButton" destination="XSo-8C-9aG" id="3vA-Rk-HoT"/>
                         <outlet property="secondLabel" destination="2kE-ry-ks6" id="J33-g7-XHq"/>
                         <outlet property="thirdLabel" destination="JS3-wg-AxU" id="rSO-Ye-Bp2"/>
                         <outlet property="timerLabel" destination="RKc-Gw-19u" id="1o4-ap-5Sg"/>
                         <segue destination="0hK-zn-d65" kind="show" identifier="showScore" id="kts-OG-uli"/>
+                        <segue destination="Vip-au-3bY" kind="show" identifier="showWeb" id="oKH-yW-AcW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -309,7 +312,6 @@
                                 <rect key="frame" x="145.5" y="240" width="84" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="DmB-3o-h5H"/>
-                                    <constraint firstAttribute="width" constant="84" id="csb-wK-5El"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.19526228309999999" green="0.56729968360136995" blue="0.66963624051095894" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -318,7 +320,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQO-jO-fhA">
                                 <rect key="frame" x="151.5" y="266" width="72" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="sVs-ZW-asy"/>
                                     <constraint firstAttribute="height" constant="55" id="xbC-eF-zYW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="46"/>
@@ -356,6 +357,54 @@
             </objects>
             <point key="canvasLocation" x="805.60000000000002" y="25.637181409295355"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="8FA-21-4cY">
+            <objects>
+                <viewController id="Vip-au-3bY" customClass="WebViewController" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KQh-wR-8pc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-5z-xBD">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSV-LM-Fhg">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PcY-MO-2yg"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="webview_bar"/>
+                                <connections>
+                                    <action selector="dismissWebView:" destination="Vip-au-3bY" eventType="touchUpInside" id="OUT-Pl-QBX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cSV-LM-Fhg" secondAttribute="trailing" id="18m-Lx-1eQ"/>
+                            <constraint firstItem="cSV-LM-Fhg" firstAttribute="top" secondItem="bi2-03-ZlK" secondAttribute="top" id="UMx-tf-VY8"/>
+                            <constraint firstItem="NUp-5z-xBD" firstAttribute="leading" secondItem="bi2-03-ZlK" secondAttribute="leading" id="VRC-t3-Q0f"/>
+                            <constraint firstItem="cSV-LM-Fhg" firstAttribute="leading" secondItem="bi2-03-ZlK" secondAttribute="leading" id="jpU-sf-0Fr"/>
+                            <constraint firstItem="bi2-03-ZlK" firstAttribute="bottom" secondItem="NUp-5z-xBD" secondAttribute="bottom" id="kIo-Mb-uX5"/>
+                            <constraint firstItem="bi2-03-ZlK" firstAttribute="trailing" secondItem="NUp-5z-xBD" secondAttribute="trailing" id="mw5-bt-mdK"/>
+                            <constraint firstItem="cSV-LM-Fhg" firstAttribute="centerX" secondItem="KQh-wR-8pc" secondAttribute="centerX" id="ryG-ap-qvV"/>
+                            <constraint firstItem="NUp-5z-xBD" firstAttribute="top" secondItem="cSV-LM-Fhg" secondAttribute="bottom" id="sbD-G9-QBW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bi2-03-ZlK"/>
+                    </view>
+                    <connections>
+                        <outlet property="wkWebView" destination="NUp-5z-xBD" id="9We-hC-JGR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqN-BJ-ttf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="751.57421289355329"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down_full" width="158" height="457"/>
@@ -368,5 +417,6 @@
         <image name="up_full_selected" width="158" height="457"/>
         <image name="up_half" width="158" height="229"/>
         <image name="up_half_selected" width="158" height="229"/>
+        <image name="webview_bar" width="1333" height="167"/>
     </resources>
 </document>

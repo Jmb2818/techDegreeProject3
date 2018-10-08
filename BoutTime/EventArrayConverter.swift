@@ -18,10 +18,12 @@ class EventArrayConverter {
         var eventPool: [Event] = []
         
         for event in array {
-            guard let eventDescription = event["description"] as? String, let eventDate = event["date"] as? Date else {
+            guard let eventDescription = event["description"] as? String,
+                let eventDate = event["date"] as? Date,
+                let url = event["url"] as? String else {
                 throw EventCoverterError.invalidConversion
             }
-            eventPool.append(Event(eventDescription: eventDescription, date: eventDate))
+            eventPool.append(Event(eventDescription: eventDescription, date: eventDate, url: url))
         }
         return eventPool
     }
