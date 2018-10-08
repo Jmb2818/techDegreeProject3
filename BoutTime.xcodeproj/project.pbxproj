@@ -17,6 +17,7 @@
 		0B85B021215C5D830092D29B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B85B020215C5D830092D29B /* Assets.xcassets */; };
 		0B85B024215C5D830092D29B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B85B022215C5D830092D29B /* LaunchScreen.storyboard */; };
 		0B85B02C215C79CF0092D29B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B85B02B215C79CF0092D29B /* GameViewController.swift */; };
+		0BB1802A216AF2530081BB14 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB18029216AF2530081BB14 /* ScoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0B85B023215C5D830092D29B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B85B025215C5D830092D29B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B85B02B215C79CF0092D29B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		0BB18029216AF2530081BB14 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				0B85B019215C5D810092D29B /* AppDelegate.swift */,
 				0B85B01D215C5D810092D29B /* Main.storyboard */,
+				0BB18029216AF2530081BB14 /* ScoreViewController.swift */,
 				0B85B020215C5D830092D29B /* Assets.xcassets */,
 				0B85B022215C5D830092D29B /* LaunchScreen.storyboard */,
 				0B85B025215C5D830092D29B /* Info.plist */,
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB1802A216AF2530081BB14 /* ScoreViewController.swift in Sources */,
 				0B85B02C215C79CF0092D29B /* GameViewController.swift in Sources */,
 				0B274677216304A7000C83C6 /* Event.swift in Sources */,
 				0B6313432165A76D007F76AE /* PlistConverter.swift in Sources */,

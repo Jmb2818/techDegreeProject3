@@ -21,6 +21,11 @@ class GameManager {
     var roundEvents: [Event] = []
     let eventsPerRound = 4
     let formatter = DateFormatter()
+    let secondsPerRound = 60
+    let roundsPerGame = 6
+    var roundsPlayed = 0
+    var roundsCorrect = 0
+    
     
     init() {
         do {
@@ -49,13 +54,33 @@ class GameManager {
     }
     
     func startRound() {
+        eventPool.shuffle()
         firstEvent = getEvent()
         secondEvent = getEvent()
         thirdEvent = getEvent()
         fourthEvent = getEvent()
+        chosenEvents.removeAll()
+    }
+    
+    func getDateString(eventDescription: String) -> String {
+        formatter.dateFormat = "yyyy"
+        for event in eventPool {
+            if event.eventDescription == eventDescription {
+                return formatter.string(from: event.date)
+            }
+        }
+        return ""
+    }
+    
+    func startOver() {
+        roundsCorrect = 0
+        roundsPlayed = 0
+        roundEvents.removeAll()
+        chosenEvents.removeAll()
     }
     
     func checkRound(userSortedEvents: [String]) -> Bool {
+        roundsPlayed += 1
         guard let firstEvent = firstEvent,
             let secondEvent = secondEvent,
             let thirdEvent = thirdEvent,
