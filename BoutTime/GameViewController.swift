@@ -173,7 +173,9 @@ class GameViewController: UIViewController {
         let userSortedEvents = getEventOrder()
         timerLabel.isHidden = true
         roundSuccessButton.isEnabled = true
-        let isCorrect = gameManager.checkRound(userSortedEvents: userSortedEvents)
+        guard let isCorrect = gameManager.checkRound(userSortedEvents: userSortedEvents) else {
+            return
+        }
         guard let firstDescription = firstLabel.attributedText?.string,
             let secondDescription = secondLabel.attributedText?.string,
             let thirdDescription = thirdLabel.attributedText?.string,
@@ -201,7 +203,7 @@ class GameViewController: UIViewController {
     
     @objc func displayCountdown() {
         // Update countdown label every second to update user of time left
-        if countdownSeconds >= 10 {
+        if countdownSeconds > 10 {
             countdownSeconds -= 1
             timerLabel.text = "0:\(countdownSeconds)"
         } else {

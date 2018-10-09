@@ -25,6 +25,7 @@ class GameManager {
     let roundsPerGame = 6
     var roundsPlayed = 0
     var roundsCorrect = 0
+    var roundChecked = false
     
     
     init() {
@@ -54,6 +55,7 @@ class GameManager {
     }
     
     func startRound() {
+        roundChecked = false
         eventPool.shuffle()
         firstEvent = getEvent()
         secondEvent = getEvent()
@@ -78,21 +80,25 @@ class GameManager {
         chosenEvents.removeAll()
     }
     
-    func checkRound(userSortedEvents: [String]) -> Bool {
-        roundsPlayed += 1
-        guard let firstEvent = firstEvent,
-            let secondEvent = secondEvent,
-            let thirdEvent = thirdEvent,
-            let fourthEvent = fourthEvent else { return false }
-        roundEvents = [firstEvent, secondEvent, thirdEvent, fourthEvent]
-        let sortedEvents = roundEvents.sorted { (event1, event2) -> Bool in
-            return event1.date < event2.date
+    func checkRound(userSortedEvents: [String]) -> Bool? {
+        if !roundChecked {
+            roundChecked = true
+            roundsPlayed += 1
+            guard let firstEvent = firstEvent,
+                let secondEvent = secondEvent,
+                let thirdEvent = thirdEvent,
+                let fourthEvent = fourthEvent else { return false }
+            roundEvents = [firstEvent, secondEvent, thirdEvent, fourthEvent]
+            let sortedEvents = roundEvents.sorted { (event1, event2) -> Bool in
+                return event1.date < event2.date
+            }
+            var sortedEventStrings: [String] = []
+            for event in sortedEvents {
+                sortedEventStrings.append(event.eventDescription)
+            }
+            
+            return userSortedEvents == sortedEventStrings
         }
-        var sortedEventStrings: [String] = []
-        for event in sortedEvents {
-            sortedEventStrings.append(event.eventDescription)
-        }
-        
-        return userSortedEvents == sortedEventStrings
+        return nil
     }
 }
