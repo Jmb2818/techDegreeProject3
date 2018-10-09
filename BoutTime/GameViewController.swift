@@ -66,10 +66,19 @@ class GameViewController: UIViewController {
     }
     
     func switchEvents(firstLabel: UILabel, secondLabel: UILabel) {
+        // Hold on to what is in the labels
             let holder = firstLabel.attributedText
-            firstLabel.attributedText = secondLabel.attributedText
+            let holder2 = secondLabel.attributedText
+        // Blank them out to start the beginning animation making it seem like they both
+        // are disappearing and re-appearing in each others spots
+            firstLabel.attributedText = NSMutableAttributedString(string: "")
+            secondLabel.attributedText = NSMutableAttributedString(string: "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             secondLabel.attributedText = holder
+            firstLabel.attributedText = holder2
+        }
     }
+    
     
     @IBAction func beginNextRound(_ sender: UIButton) {
         if gameManager.roundsPlayed == gameManager.roundsPerGame {
@@ -95,9 +104,9 @@ class GameViewController: UIViewController {
     }
     
     func runTimer() {
-        // Create timer for the round where if no choice is made before the time is up still display question
+        // Create timer for the round where if no choice is made before the time is up then score the round
         roundTimer = Timer.scheduledTimer(timeInterval: Double(gameManager.secondsPerRound), target: self, selector: #selector(checkAnswers), userInfo: nil, repeats: true)
-        // Create a timer to update the countdown timer
+        // Create a timer to update the countdown timer label
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displayCountdown), userInfo: nil, repeats: true)
     }
     
