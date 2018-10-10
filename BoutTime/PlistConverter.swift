@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum PlistConversionError: Error {
-    case missingPlist
-    case invalidConversion
-}
-
 class PlistConverter {
     static func array(fromFile name: String, ofType type: String) throws -> [AnyObject] {
         guard let path = Bundle.main.path(forResource: name, ofType: type) else {

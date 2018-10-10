@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G3p-F1-db8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="nj0-Ck-W4M">
+            <objects>
+                <viewController id="G3p-F1-db8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wi6-8P-1n2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Bout Time!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sgv-7G-t1O">
+                                <rect key="frame" x="61.5" y="170" width="252" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" red="0.1960784314" green="0.48627450979999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REI-zS-DU1">
+                                <rect key="frame" x="113" y="467" width="149" height="50"/>
+                                <color key="backgroundColor" red="0.23607829213142395" green="0.56648546457290649" blue="0.70215874910354614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rni-dG-u1F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="dzd-gJ-7Y8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrange the events in order from oldest to most recent, top to bottom. Category is: North American History" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zqn-Ih-Obf">
+                                <rect key="frame" x="60" y="259" width="255" height="95.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.1960784314" green="0.48627450979999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.027450980392156862" green="0.16470588235294117" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zqn-Ih-Obf" firstAttribute="top" secondItem="sgv-7G-t1O" secondAttribute="bottom" constant="60" id="1cW-AP-WqR"/>
+                            <constraint firstItem="sgv-7G-t1O" firstAttribute="top" secondItem="tYj-ic-6gb" secondAttribute="top" constant="150" id="FkP-Pc-fq6"/>
+                            <constraint firstItem="sgv-7G-t1O" firstAttribute="centerX" secondItem="wi6-8P-1n2" secondAttribute="centerX" id="No4-oD-EtS"/>
+                            <constraint firstItem="REI-zS-DU1" firstAttribute="leading" secondItem="tYj-ic-6gb" secondAttribute="leading" constant="113" id="YWw-xK-GFq"/>
+                            <constraint firstItem="zqn-Ih-Obf" firstAttribute="centerX" secondItem="wi6-8P-1n2" secondAttribute="centerX" id="nQ5-po-KTd"/>
+                            <constraint firstItem="REI-zS-DU1" firstAttribute="centerX" secondItem="zqn-Ih-Obf" secondAttribute="centerX" id="rux-LP-ClA"/>
+                            <constraint firstAttribute="trailing" secondItem="zqn-Ih-Obf" secondAttribute="trailing" constant="60" id="tHz-zx-jgO"/>
+                            <constraint firstItem="tYj-ic-6gb" firstAttribute="bottom" secondItem="REI-zS-DU1" secondAttribute="bottom" constant="150" id="zKh-uv-J5r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tYj-ic-6gb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xzi-3t-i7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="-716"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -21,7 +79,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W07-57-c6C">
                                 <rect key="frame" x="116.5" y="631.5" width="142.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.19526228308677673" green="0.48794394731521606" blue="0.65002472514975562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.19607843137254902" green="0.48627450980392156" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKc-Gw-19u">
@@ -43,7 +101,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Sputnick was launched by the Ussr">
                                                         <attributes>
-                                                            <color key="NSColor" red="0.002550186822" green="0.087009154259999999" blue="0.37531614299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="0.0039215686274509803" green="0.086274509803921567" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="20" name=".SFNSDisplay"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" headIndent="20" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
@@ -57,6 +115,7 @@
                                                     <constraint firstAttribute="width" constant="40" id="b37-Kp-hhN"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="down_full"/>
+                                                <state key="disabled" backgroundImage="down_full"/>
                                                 <state key="highlighted" backgroundImage="down_full_selected"/>
                                                 <connections>
                                                     <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="unx-la-iCj"/>
@@ -72,11 +131,6 @@
                                             <constraint firstItem="f2C-WE-YoQ" firstAttribute="leading" secondItem="wUM-QL-A4T" secondAttribute="trailing" id="v05-Vz-CAl"/>
                                             <constraint firstItem="f2C-WE-YoQ" firstAttribute="top" secondItem="NIc-p6-r06" secondAttribute="top" id="xnZ-Ez-1lr"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfQ-sb-vhC">
                                         <rect key="frame" x="0.0" y="133.5" width="325" height="123.5"/>
@@ -88,9 +142,48 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Roger Maris broke the Babe's HR record">
                                                         <attributes>
-                                                            <color key="NSColor" red="0.002550186822" green="0.087009154259999999" blue="0.37531614299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="0.0039215686274509803" green="0.086274509803921567" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="20" name=".SFNSDisplay"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" headIndent="20" tighteningFactorForTruncation="0.0"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" headIndent="20" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops>
+                                                                    <textTab alignment="left" location="28">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="56">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="84">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="112">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="140">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="168">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="196">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="224">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="252">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="280">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="308">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="336">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                </tabStops>
+                                                            </paragraphStyle>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -105,6 +198,7 @@
                                                             <constraint firstAttribute="width" constant="40" id="8OX-3e-e1w"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="up_half"/>
+                                                        <state key="disabled" backgroundImage="up_half"/>
                                                         <state key="highlighted" backgroundImage="up_half_selected"/>
                                                         <connections>
                                                             <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ssj-vU-Uuy"/>
@@ -116,6 +210,7 @@
                                                             <constraint firstAttribute="width" constant="40" id="hcQ-ft-WL3"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="down_half"/>
+                                                        <state key="disabled" backgroundImage="down_half"/>
                                                         <state key="highlighted" backgroundImage="down_half_selected"/>
                                                         <connections>
                                                             <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aiC-m1-swW"/>
@@ -138,11 +233,6 @@
                                             <constraint firstItem="2kE-ry-ks6" firstAttribute="top" secondItem="BfQ-sb-vhC" secondAttribute="top" id="u4J-rd-X2J"/>
                                             <constraint firstItem="2kE-ry-ks6" firstAttribute="leading" secondItem="BfQ-sb-vhC" secondAttribute="leading" id="uou-Zy-QLz"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-Rz-OVT">
                                         <rect key="frame" x="0.0" y="267" width="325" height="123"/>
@@ -170,6 +260,7 @@
                                                             <constraint firstAttribute="width" constant="40" id="WHt-rF-3Ls"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="up_half"/>
+                                                        <state key="disabled" backgroundImage="up_half"/>
                                                         <state key="highlighted" backgroundImage="up_half_selected"/>
                                                         <connections>
                                                             <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KoX-dY-GFt"/>
@@ -181,6 +272,7 @@
                                                             <constraint firstAttribute="width" constant="40" id="BgE-Ee-LH8"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="down_half"/>
+                                                        <state key="disabled" backgroundImage="down_half"/>
                                                         <state key="highlighted" backgroundImage="down_half_selected"/>
                                                         <connections>
                                                             <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ptV-He-b9n"/>
@@ -202,11 +294,6 @@
                                             <constraint firstItem="Ghf-bF-t0t" firstAttribute="leading" secondItem="JS3-wg-AxU" secondAttribute="trailing" id="YPa-Ro-aKO"/>
                                             <constraint firstAttribute="bottom" secondItem="JS3-wg-AxU" secondAttribute="bottom" id="YhN-9D-kZg"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPF-9b-1nf">
                                         <rect key="frame" x="0.0" y="400" width="325" height="123.5"/>
@@ -217,7 +304,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="George McFly first kisses Lorraine">
                                                         <attributes>
-                                                            <color key="NSColor" red="0.002550186822" green="0.087009154259999999" blue="0.37531614299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="0.0039215686274509803" green="0.086274509803921567" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="20" name=".SFNSText"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" headIndent="20" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
@@ -231,6 +318,7 @@
                                                     <constraint firstAttribute="width" constant="40" id="Waf-aB-Kw0"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="up_full"/>
+                                                <state key="disabled" backgroundImage="up_full"/>
                                                 <state key="highlighted" backgroundImage="up_full_selected"/>
                                                 <connections>
                                                     <action selector="eventSwapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bCl-w5-QIa"/>
@@ -246,11 +334,6 @@
                                             <constraint firstItem="O1n-Ir-u1u" firstAttribute="top" secondItem="nPF-9b-1nf" secondAttribute="top" id="VKx-EU-gu9"/>
                                             <constraint firstAttribute="bottom" secondItem="O1n-Ir-u1u" secondAttribute="bottom" id="g0e-QE-iRn"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -263,7 +346,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="next_round_success"/>
                                 <connections>
-                                    <action selector="beginNextRound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MNR-tk-dik"/>
+                                    <action selector="startNextRound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MNR-tk-dik"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -284,12 +367,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="fifthButton" destination="WgV-S0-gDj" id="pVX-Jw-zsZ"/>
+                        <outlet property="firstButton" destination="f2C-WE-YoQ" id="eab-zv-Jgt"/>
                         <outlet property="firstLabel" destination="wUM-QL-A4T" id="DvT-Ft-fbb"/>
                         <outlet property="firstStackView" destination="NIc-p6-r06" id="gvi-2R-Anf"/>
+                        <outlet property="fourthButton" destination="MtA-9J-IW9" id="YqJ-2Z-cFu"/>
                         <outlet property="fourthLabel" destination="O1n-Ir-u1u" id="XbC-AE-xH7"/>
                         <outlet property="hintLabel" destination="W07-57-c6C" id="eHn-ts-yYD"/>
                         <outlet property="roundSuccessButton" destination="XSo-8C-9aG" id="3vA-Rk-HoT"/>
+                        <outlet property="secondButton" destination="UgJ-EQ-aRu" id="qeF-l9-kcl"/>
                         <outlet property="secondLabel" destination="2kE-ry-ks6" id="J33-g7-XHq"/>
+                        <outlet property="sixthButton" destination="B9p-nQ-l0Z" id="MSX-de-6pX"/>
+                        <outlet property="thirdButton" destination="mVD-bJ-LJn" id="Vj8-6o-Trx"/>
                         <outlet property="thirdLabel" destination="JS3-wg-AxU" id="rSO-Ye-Bp2"/>
                         <outlet property="timerLabel" destination="RKc-Gw-19u" id="1o4-ap-5Sg"/>
                         <segue destination="0hK-zn-d65" kind="show" identifier="showScore" id="kts-OG-uli"/>
@@ -338,7 +427,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.026048865169286728" green="0.16382208466529846" blue="0.29546085000038147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.027450980392156862" green="0.16470588235294117" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EF2-Ba-HeQ" firstAttribute="top" secondItem="Bd1-hR-5CK" secondAttribute="top" constant="220" id="28q-Ku-LQq"/>
                             <constraint firstItem="EF2-Ba-HeQ" firstAttribute="centerX" secondItem="XZS-nc-fd9" secondAttribute="centerX" id="7Mk-Lk-cbd"/>

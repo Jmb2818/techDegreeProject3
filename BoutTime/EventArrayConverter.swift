@@ -8,10 +8,6 @@
 
 import Foundation
 
-enum EventCoverterError: Error {
-    case invalidConversion
-}
-
 class EventArrayConverter {
     
     static func eventArray(fromArray array: [AnyObject]) throws -> [Event] {

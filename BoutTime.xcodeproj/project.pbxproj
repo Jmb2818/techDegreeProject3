@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B223CB2216DAC7100C6AD37 /* magicChime.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B223CB1216DAC7000C6AD37 /* magicChime.wav */; };
+		0B223CB4216DAC7800C6AD37 /* metalTwing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B223CB3216DAC7800C6AD37 /* metalTwing.wav */; };
+		0B223CB8216DC5A700C6AD37 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B223CB7216DC5A700C6AD37 /* Errors.swift */; };
 		0B274677216304A7000C83C6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B274676216304A7000C83C6 /* Event.swift */; };
 		0B63134121659DFD007F76AE /* Events.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B63134021659DFD007F76AE /* Events.plist */; };
 		0B6313432165A76D007F76AE /* PlistConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6313422165A76D007F76AE /* PlistConverter.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B223CB1216DAC7000C6AD37 /* magicChime.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = magicChime.wav; sourceTree = "<group>"; };
+		0B223CB3216DAC7800C6AD37 /* metalTwing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = metalTwing.wav; sourceTree = "<group>"; };
+		0B223CB7216DC5A700C6AD37 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		0B274676216304A7000C83C6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0B63134021659DFD007F76AE /* Events.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Events.plist; sourceTree = "<group>"; };
 		0B6313422165A76D007F76AE /* PlistConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConverter.swift; sourceTree = "<group>"; };
@@ -81,6 +87,9 @@
 				0B63134021659DFD007F76AE /* Events.plist */,
 				0B6313422165A76D007F76AE /* PlistConverter.swift */,
 				0B6313442165AAED007F76AE /* EventArrayConverter.swift */,
+				0B223CB1216DAC7000C6AD37 /* magicChime.wav */,
+				0B223CB3216DAC7800C6AD37 /* metalTwing.wav */,
+				0B223CB7216DC5A700C6AD37 /* Errors.swift */,
 			);
 			path = BoutTime;
 			sourceTree = "<group>";
@@ -143,7 +152,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B223CB2216DAC7100C6AD37 /* magicChime.wav in Resources */,
 				0B85B024215C5D830092D29B /* LaunchScreen.storyboard in Resources */,
+				0B223CB4216DAC7800C6AD37 /* metalTwing.wav in Resources */,
 				0B85B021215C5D830092D29B /* Assets.xcassets in Resources */,
 				0B85B01F215C5D810092D29B /* Main.storyboard in Resources */,
 				0B63134121659DFD007F76AE /* Events.plist in Resources */,
@@ -164,6 +175,7 @@
 				0B6313452165AAED007F76AE /* EventArrayConverter.swift in Sources */,
 				0B85B01A215C5D810092D29B /* AppDelegate.swift in Sources */,
 				0B802FE02164550F00CE0092 /* GameManager.swift in Sources */,
+				0B223CB8216DC5A700C6AD37 /* Errors.swift in Sources */,
 				0BB1802C216B05370081BB14 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

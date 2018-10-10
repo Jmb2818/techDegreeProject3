@@ -26,8 +26,10 @@ class GameManager {
     var roundsPlayed = 0
     var roundsCorrect = 0
     var roundChecked = false
+    var gameCorrectSound: SystemSoundID = 0
+    var gameIncorrectSound: SystemSoundID = 1
     
-    
+    // Initializers
     init() {
         do {
             let arrayOfDicts = try PlistConverter.array(fromFile: "Events", ofType: "plist")
@@ -36,6 +38,24 @@ class GameManager {
         } catch(let error) {
             fatalError("\(error)")
         }
+    }
+    
+    func loadGameSounds() {
+        //Create sound for correctly ordered events
+        let correctSoundPath = Bundle.main.path(forResource: "magicChime", ofType: "wav")
+        let correctSoundUrl = URL(fileURLWithPath: correctSoundPath!)
+        AudioServicesCreateSystemSoundID(correctSoundUrl as CFURL, &gameCorrectSound)
+         //Create sound for incorrectly ordered events
+        let incorrectSoundPath = Bundle.main.path(forResource: "metalTwing", ofType: "wav")
+        let incorrectSoundUrl = URL(fileURLWithPath: incorrectSoundPath!)
+        AudioServicesCreateSystemSoundID(incorrectSoundUrl as CFURL, &gameIncorrectSound)
+    }
+    
+    func playCorrectAnswerSound() {
+        AudioServicesPlaySystemSound(gameCorrectSound)
+    }
+    func playIncorrectAnswerSound() {
+        AudioServicesPlaySystemSound(gameIncorrectSound)
     }
     
     func getEvent() -> Event {
@@ -55,6 +75,7 @@ class GameManager {
     }
     
     func startRound() {
+        // Start a round of the game
         roundChecked = false
         eventPool.shuffle()
         firstEvent = getEvent()
@@ -65,6 +86,7 @@ class GameManager {
     }
     
     func getDateString(eventDescription: String) -> NSMutableAttributedString {
+        // Get date to append to the end of the event description
         for event in eventPool {
             if event.eventDescription == eventDescription {
                 return event.attributedDescriptionWithDate()
@@ -74,6 +96,7 @@ class GameManager {
     }
     
     func startOver() {
+        // Clear everything out to start game over
         roundsCorrect = 0
         roundsPlayed = 0
         roundEvents.removeAll()
@@ -81,17 +104,28 @@ class GameManager {
     }
     
     func checkRound(userSortedEvents: [String]) -> Bool? {
+        // Making sure round is not already checked to prevent extra shakes rechecking
         if !roundChecked {
             roundChecked = true
+            
+            // Increment the amount of rounds played this game
             roundsPlayed += 1
             guard let firstEvent = firstEvent,
                 let secondEvent = secondEvent,
                 let thirdEvent = thirdEvent,
-                let fourthEvent = fourthEvent else { return false }
+                let fourthEvent = fourthEvent
+                else {
+                    print("Events do not exist")
+                    return nil
+            }
+            // Add events to array and sort them by date oldest to newest
             roundEvents = [firstEvent, secondEvent, thirdEvent, fourthEvent]
             let sortedEvents = roundEvents.sorted { (event1, event2) -> Bool in
                 return event1.date < event2.date
             }
+            
+            // Get the event descriptions of events in order and check them against the user
+            // ordered events
             var sortedEventStrings: [String] = []
             for event in sortedEvents {
                 sortedEventStrings.append(event.eventDescription)
@@ -99,6 +133,7 @@ class GameManager {
             
             return userSortedEvents == sortedEventStrings
         }
+        
         return nil
     }
 }

@@ -26,7 +26,7 @@ class ScoreViewController: UIViewController {
             return
         }
         mainVC.gameManager.startOver()
-        mainVC.beginRound()
+        mainVC.startRound()
         dismiss(animated: true, completion: nil)
     }
     

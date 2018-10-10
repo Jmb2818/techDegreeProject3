@@ -10,11 +10,14 @@ import Foundation
 import UIKit
 
 class Event {
+    
+    // MARK: Properties
     let eventDescription: String
     let date: Date
     let formatter = DateFormatter()
     let url: String
     
+    // MARK: Initializer
     init(eventDescription: String, date: Date, url: String) {
         self.eventDescription = eventDescription
         self.date = date
@@ -27,6 +30,7 @@ class Event {
     }
     
     func attributeDescription() -> NSMutableAttributedString {
+        // Return the event's description in an attributed style that matches design
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 20
         paragraphStyle.headIndent = 20
@@ -36,6 +40,7 @@ class Event {
     }
     
     func attributedDescriptionWithDate() -> NSMutableAttributedString {
+        // Return the event's description with a date in an attributed style that matches design
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 20
         paragraphStyle.headIndent = 20

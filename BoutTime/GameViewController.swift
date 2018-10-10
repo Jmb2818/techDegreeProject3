@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    // MARK: IBOutlets - Labels
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var thirdLabel: UILabel!
@@ -18,22 +19,32 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var firstStackView: UIStackView!
+    // MARK: IBOutlets - Buttons
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
+    @IBOutlet weak var fourthButton: UIButton!
+    @IBOutlet weak var fifthButton: UIButton!
+    @IBOutlet weak var sixthButton: UIButton!
     
+    // MARK: Properties
     var gameManager = GameManager()
     var countdownSeconds = 60
     var roundTimer = Timer()
     var countdownTimer = Timer()
     var selectedURL = ""
+    var labelArray: [UILabel] = []
+    var buttonArray: [UIButton] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        beginRound()
-        createTapRecognizer(label: firstLabel)
-        createTapRecognizer(label: secondLabel)
-        createTapRecognizer(label: thirdLabel)
-        createTapRecognizer(label: fourthLabel)
-    
+
+        // Get arrays of all interactable UI elements to set up the game
+        labelArray = [firstLabel, secondLabel, thirdLabel, fourthLabel]
+        buttonArray = [firstButton, secondButton, thirdButton, fourthButton, fifthButton, sixthButton]
+        setupGame()
+        startRound()
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -64,6 +75,39 @@ class GameViewController: UIViewController {
             
         }
     }
+    func roundOuterCorners(for label: UILabel) {
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 5
+        label.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+    }
+    
+    func roundOuterCorners(for button: UIButton) {
+        for button in buttonArray {
+            switch button.restorationIdentifier {
+            case "firstDownButton", "thirdUpBUtton":
+                button.layer.cornerRadius = 5
+                button.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            case "secondDownButton", "thirdDownButton":
+                button.layer.cornerRadius = 5
+                button.layer.maskedCorners = [.layerMaxXMinYCorner]
+            case "firstUpBUtton", "secondUpBUtton":
+                button.layer.cornerRadius = 5
+                button.layer.maskedCorners = [.layerMaxXMaxYCorner]
+            default: break
+            }
+        }
+    }
+    
+    func setupGame() {
+        for label in labelArray {
+            roundOuterCorners(for: label)
+            createTapRecognizer(label: label)
+        }
+        
+        for button in buttonArray {
+            roundOuterCorners(for: button)
+        }
+    }
     
     func switchEvents(firstLabel: UILabel, secondLabel: UILabel) {
         // Hold on to what is in the labels
@@ -79,12 +123,21 @@ class GameViewController: UIViewController {
         }
     }
     
+    func enableButtons(_ bool: Bool) {
+        firstButton.isEnabled = bool
+        secondButton.isEnabled = bool
+        thirdButton.isEnabled = bool
+        fourthButton.isEnabled = bool
+        fifthButton.isEnabled = bool
+        sixthButton.isEnabled = bool
+    }
     
-    @IBAction func beginNextRound(_ sender: UIButton) {
+    
+    @IBAction func startNextRound(_ sender: UIButton) {
         if gameManager.roundsPlayed == gameManager.roundsPerGame {
             performSegue(withIdentifier: "showScore", sender: nil)
         } else {
-            beginRound()
+            startRound()
         }
     }
     
@@ -110,27 +163,40 @@ class GameViewController: UIViewController {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displayCountdown), userInfo: nil, repeats: true)
     }
     
-    func beginRound() {
+    func setUpRound() {
         gameManager.startRound()
+        gameManager.loadGameSounds()
         timerLabel.isHidden = false
         timerLabel.text = "1:00"
         countdownSeconds = gameManager.secondsPerRound
         roundSuccessButton.isEnabled = false
         roundSuccessButton.isHidden = true
         hintLabel.text = "Shake to complete"
-        guard let firstEventDescription = gameManager.firstEvent?.attributeDescription(),
-            let secondEventDescription = gameManager.secondEvent?.attributeDescription(),
-            let thirdEventDescription = gameManager.thirdEvent?.attributeDescription(),
-            let fourthEventDescription = gameManager.fourthEvent?.attributeDescription() else {
-                // TODO: throw an error
+        enableButtons(true)
+    }
+    
+    func endRound() {
+        roundTimer.invalidate()
+        countdownTimer.invalidate()
+        timerLabel.isHidden = true
+        roundSuccessButton.isEnabled = true
+        enableButtons(false)
+    }
+    
+    func startRound() {
+        setUpRound()
+        guard let firstEvent = gameManager.firstEvent,
+            let secondEvent = gameManager.secondEvent,
+            let thirdEvent = gameManager.thirdEvent,
+            let fourthEvent = gameManager.fourthEvent else {
                 print("Events do not exist")
                 return
         }
         
-        firstLabel.attributedText = firstEventDescription
-        secondLabel.attributedText = secondEventDescription
-        thirdLabel.attributedText = thirdEventDescription
-        fourthLabel.attributedText = fourthEventDescription
+        firstLabel.attributedText = firstEvent.attributeDescription()
+        secondLabel.attributedText = secondEvent.attributeDescription()
+        thirdLabel.attributedText = thirdEvent.attributeDescription()
+        fourthLabel.attributedText = fourthEvent.attributeDescription()
         runTimer()
     }
     
@@ -140,7 +206,7 @@ class GameViewController: UIViewController {
             let secondDescription = secondLabel.attributedText?.string,
             let thirdDescription = thirdLabel.attributedText?.string,
             let fourthDescription = fourthLabel.attributedText?.string else {
-                // TODO: Throw error
+                print("Could not retrieve events and descriptions")
                 
                 return []
         }
@@ -168,20 +234,17 @@ class GameViewController: UIViewController {
     }
     
     @objc func checkAnswers() {
-        roundTimer.invalidate()
-        countdownTimer.invalidate()
         let userSortedEvents = getEventOrder()
-        timerLabel.isHidden = true
-        roundSuccessButton.isEnabled = true
+        endRound()
         guard let isCorrect = gameManager.checkRound(userSortedEvents: userSortedEvents) else {
+            print("Could not check answer")
             return
         }
         guard let firstDescription = firstLabel.attributedText?.string,
             let secondDescription = secondLabel.attributedText?.string,
             let thirdDescription = thirdLabel.attributedText?.string,
             let fourthDescription = fourthLabel.attributedText?.string else {
-                // TODO: Throw error
-                
+                print("Error retrieving events and descriptions")
                 return
         }
         
@@ -192,10 +255,12 @@ class GameViewController: UIViewController {
         
         hintLabel.text = "Tap events to learn more"
         if isCorrect {
+            gameManager.playCorrectAnswerSound()
             roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_success"), for: .normal)
             gameManager.roundsCorrect += 1
             roundSuccessButton.isHidden = false
         } else {
+            gameManager.playIncorrectAnswerSound()
             roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_fail"), for: .normal)
             roundSuccessButton.isHidden = false
         }
@@ -203,6 +268,7 @@ class GameViewController: UIViewController {
     
     @objc func displayCountdown() {
         // Update countdown label every second to update user of time left
+        // Checking if countdown is at 10 and if so make sure it shows the right formatting
         if countdownSeconds > 10 {
             countdownSeconds -= 1
             timerLabel.text = "0:\(countdownSeconds)"
