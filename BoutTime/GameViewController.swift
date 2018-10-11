@@ -58,6 +58,8 @@ class GameViewController: UIViewController {
         }
     }
     
+       // MARK: Actions
+    
     @IBAction func eventSwap(sender: UIButton) {
         // Swap events based on what button is pressed
         switch sender.restorationIdentifier {
@@ -77,6 +79,19 @@ class GameViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func startNextRound(_ sender: UIButton) {
+        if gameManager.roundsPlayed == gameManager.roundsPerGame {
+            // If six rounds have been completed then show the score screen
+            performSegue(withIdentifier: "showScore", sender: nil)
+        } else {
+            // Start new round
+            startRound()
+        }
+    }
+    
+       // MARK: Helper Functions
+    
     func roundOuterCorners(for label: UILabel) {
         // Round corners of labels on the correct corners to match mock
         label.layer.masksToBounds = true
@@ -136,17 +151,6 @@ class GameViewController: UIViewController {
         fourthButton.isEnabled = bool
         fifthButton.isEnabled = bool
         sixthButton.isEnabled = bool
-    }
-    
-    
-    @IBAction func startNextRound(_ sender: UIButton) {
-        if gameManager.roundsPlayed == gameManager.roundsPerGame {
-            // If six rounds have been completed then show the score screen
-            performSegue(withIdentifier: "showScore", sender: nil)
-        } else {
-            // Start new round
-            startRound()
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -255,29 +259,32 @@ class GameViewController: UIViewController {
     }
     
     @objc func checkAnswers() {
-        
-        // Check the order of events the user has chosen against the correct order
-        let userSortedEvents = getEventOrder()
-        
-        // Do needed round teardown
-        endRound()
-        appendDatesOfEvents()
-        
-        // Get if the user is correct or not and then display approrpate results
-        guard let isCorrect = gameManager.checkRound(userSortedEvents: userSortedEvents) else {
-            print("Could not check answer")
-            return
-        }
-        
-        if isCorrect {
-            gameManager.playCorrectAnswerSound()
-            roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_success"), for: .normal)
-            gameManager.roundsCorrect += 1
-            roundSuccessButton.isHidden = false
-        } else {
-            gameManager.playIncorrectAnswerSound()
-            roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_fail"), for: .normal)
-            roundSuccessButton.isHidden = false
+        // Making sure round is not already checked to prevent extra shakes rechecking
+        if !gameManager.roundChecked {
+            
+            // Check the order of events the user has chosen against the correct order
+            let userSortedEvents = getEventOrder()
+            
+            // Do needed round teardown
+            endRound()
+            appendDatesOfEvents()
+            
+            // Get if the user is correct or not and then display approrpate results
+            guard let isCorrect = gameManager.checkRound(userSortedEvents: userSortedEvents) else {
+                print("Could not check answer")
+                return
+            }
+            
+            if isCorrect {
+                gameManager.playCorrectAnswerSound()
+                roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_success"), for: .normal)
+                gameManager.roundsCorrect += 1
+                roundSuccessButton.isHidden = false
+            } else {
+                gameManager.playIncorrectAnswerSound()
+                roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_fail"), for: .normal)
+                roundSuccessButton.isHidden = false
+            }
         }
     }
     

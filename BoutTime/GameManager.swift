@@ -30,16 +30,24 @@ class GameManager {
     var gameCorrectSound: SystemSoundID = 0
     var gameIncorrectSound: SystemSoundID = 1
     
-    // Initializers
+    // MARK: Initializers
     init() {
         do {
             let arrayOfDicts = try PlistConverter.array(fromFile: "Events", ofType: "plist")
             let arrayOfEvents = try EventArrayConverter.eventArray(fromArray: arrayOfDicts)
             eventPool = arrayOfEvents
+        } catch PlistConversionError.invalidConversion {
+            fatalError("Could not convert contents of Plist into [AnyObject]")
+        } catch PlistConversionError.missingPlist {
+            fatalError("Could not find plist of name 'Events' in file")
+        } catch EventCoverterError.invalidConversion {
+            fatalError("Unable to create events when converting from [AnyObject]")
         } catch(let error) {
             fatalError("\(error)")
         }
     }
+    
+    // MARK: Functions
     
     func loadGameSounds() {
         //Create sound for correctly ordered events
@@ -105,8 +113,7 @@ class GameManager {
     }
     
     func checkRound(userSortedEvents: [String]) -> Bool? {
-        // Making sure round is not already checked to prevent extra shakes rechecking
-        if !roundChecked {
+        // Marking round checked to prevent extra shakes rechecking
             roundChecked = true
             
             // Increment the amount of rounds played this game
@@ -133,8 +140,5 @@ class GameManager {
             }
             
             return userSortedEvents == sortedEventStrings
-        }
-        
-        return nil
     }
 }
