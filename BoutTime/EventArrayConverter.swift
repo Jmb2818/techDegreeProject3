@@ -9,7 +9,7 @@
 import Foundation
 
 class EventArrayConverter {
-    
+    // Convert plist of array [AnyObject] into events
     static func eventArray(fromArray array: [AnyObject]) throws -> [Event] {
         var eventPool: [Event] = []
         

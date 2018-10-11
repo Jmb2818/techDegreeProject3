@@ -94,7 +94,7 @@
 		<key>url</key>
 		<string>https://en.wikipedia.org/wiki/Louisiana_Purchase</string>
 		<key>description</key>
-		<string>THe United States aquires the Louisiana territory from France</string>
+		<string>The United States aquires the Louisiana territory from France</string>
 		<key>date</key>
 		<date>1803-12-26T02:04:13Z</date>
 	</dict>
@@ -190,7 +190,7 @@
 		<key>url</key>
 		<string>https://en.wikipedia.org/wiki/Republic_of_Texas</string>
 		<key>description</key>
-		<string> English-speaking region of Texas declares itself the Republic of Texas</string>
+		<string>English-speaking region of Texas declares itself the Republic of Texas</string>
 		<key>date</key>
 		<date>1836-12-26T02:04:13Z</date>
 	</dict>

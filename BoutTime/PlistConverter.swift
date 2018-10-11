@@ -9,6 +9,7 @@
 import Foundation
 
 class PlistConverter {
+    // Load up plist from file into array of [AnyObject]
     static func array(fromFile name: String, ofType type: String) throws -> [AnyObject] {
         guard let path = Bundle.main.path(forResource: name, ofType: type) else {
             throw PlistConversionError.missingPlist

@@ -13,7 +13,7 @@ class ScoreViewController: UIViewController {
     // MARK: IBOutlets
     @IBOutlet weak var scoreLabel: UILabel!
     
-    // Properties
+    // MARK: Properties
     var score = 0
     var mainViewController: GameViewController?
     
