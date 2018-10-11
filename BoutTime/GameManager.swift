@@ -51,11 +51,11 @@ class GameManager {
     
     func loadGameSounds() {
         //Create sound for correctly ordered events
-        let correctSoundPath = Bundle.main.path(forResource: "magicChime", ofType: "wav")
+        let correctSoundPath = Bundle.main.path(forResource: "CorrectDing", ofType: "wav")
         let correctSoundUrl = URL(fileURLWithPath: correctSoundPath!)
         AudioServicesCreateSystemSoundID(correctSoundUrl as CFURL, &gameCorrectSound)
          //Create sound for incorrectly ordered events
-        let incorrectSoundPath = Bundle.main.path(forResource: "metalTwing", ofType: "wav")
+        let incorrectSoundPath = Bundle.main.path(forResource: "IncorrectBuzz", ofType: "wav")
         let incorrectSoundUrl = URL(fileURLWithPath: incorrectSoundPath!)
         AudioServicesCreateSystemSoundID(incorrectSoundUrl as CFURL, &gameIncorrectSound)
     }
