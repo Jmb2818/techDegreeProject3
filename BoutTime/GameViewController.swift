@@ -47,6 +47,7 @@ class GameViewController: UIViewController {
         startRound()
     }
     
+    // Set up the motion detection
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -58,6 +59,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func eventSwap(sender: UIButton) {
+        // Swap events based on what button is pressed
         switch sender.restorationIdentifier {
         case "firstDownButton":
             switchEvents(firstLabel: firstLabel, secondLabel: secondLabel)
@@ -76,12 +78,14 @@ class GameViewController: UIViewController {
         }
     }
     func roundOuterCorners(for label: UILabel) {
+        // Round corners of labels on the correct corners to match mock
         label.layer.masksToBounds = true
         label.layer.cornerRadius = 5
         label.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
     }
     
     func roundOuterCorners(for button: UIButton) {
+        // Round corners of buttons on the correct corners to match mock
         for button in buttonArray {
             switch button.restorationIdentifier {
             case "firstDownButton", "thirdUpBUtton":
@@ -99,6 +103,7 @@ class GameViewController: UIViewController {
     }
     
     func setupGame() {
+        // Setup all the UI for the game like buttons and labels
         for label in labelArray {
             roundOuterCorners(for: label)
             createTapRecognizer(label: label)
@@ -124,6 +129,7 @@ class GameViewController: UIViewController {
     }
     
     func enableButtons(_ bool: Bool) {
+        // Enable or disable buttons to move events
         firstButton.isEnabled = bool
         secondButton.isEnabled = bool
         thirdButton.isEnabled = bool
@@ -135,8 +141,10 @@ class GameViewController: UIViewController {
     
     @IBAction func startNextRound(_ sender: UIButton) {
         if gameManager.roundsPlayed == gameManager.roundsPerGame {
+            // If six rounds have been completed then show the score screen
             performSegue(withIdentifier: "showScore", sender: nil)
         } else {
+            // Start new round
             startRound()
         }
     }
@@ -164,6 +172,7 @@ class GameViewController: UIViewController {
     }
     
     func setUpRound() {
+        // Setup the round by hiding specific UI and resetting labels
         gameManager.startRound()
         gameManager.loadGameSounds()
         timerLabel.isHidden = false
@@ -176,6 +185,10 @@ class GameViewController: UIViewController {
     }
     
     func endRound() {
+        // Switch the hint label so the user knows they can learn more from the events
+        hintLabel.text = "Tap events to learn more"
+        
+        // End round by ending timers and hiding specific UI
         roundTimer.invalidate()
         countdownTimer.invalidate()
         timerLabel.isHidden = true
@@ -185,6 +198,7 @@ class GameViewController: UIViewController {
     
     func startRound() {
         setUpRound()
+        // Get the event descriptions to populate the labels
         guard let firstEvent = gameManager.firstEvent,
             let secondEvent = gameManager.secondEvent,
             let thirdEvent = gameManager.thirdEvent,
@@ -201,6 +215,7 @@ class GameViewController: UIViewController {
     }
     
     func getEventOrder() -> [String] {
+        // Get the order of events as the user has moved them in the UI
         var orderedEventStrings: [String] = []
         guard let firstDescription = firstLabel.attributedText?.string,
             let secondDescription = secondLabel.attributedText?.string,
@@ -215,16 +230,22 @@ class GameViewController: UIViewController {
     }
     
     func createTapRecognizer(label: UILabel) {
+        // Add a tap recognizer to get the event selected by user at the end of the round
         let tapAction = UITapGestureRecognizer(target: self, action: #selector(selectedLabel))
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(tapAction)
     }
     
     @objc func selectedLabel(_ sender: AnyObject) {
+        // Get event selected and return the appropriate webView for that event for more information
         guard let gestureRecognizer = sender as? UITapGestureRecognizer,
             let label = gestureRecognizer.view as? UILabel,
             let selectedEvent = label.attributedText?.string
-            else { return }
+            else {
+                print("No event found for webview")
+                return
+        }
+        
         for event in gameManager.eventPool {
             if event.attributedDescriptionWithDate().string == selectedEvent {
                 selectedURL = event.url
@@ -234,12 +255,34 @@ class GameViewController: UIViewController {
     }
     
     @objc func checkAnswers() {
+        
+        // Check the order of events the user has chosen against the correct order
         let userSortedEvents = getEventOrder()
+        
+        // Do needed round teardown
         endRound()
+        appendDatesOfEvents()
+        
+        // Get if the user is correct or not and then display approrpate results
         guard let isCorrect = gameManager.checkRound(userSortedEvents: userSortedEvents) else {
             print("Could not check answer")
             return
         }
+        
+        if isCorrect {
+            gameManager.playCorrectAnswerSound()
+            roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_success"), for: .normal)
+            gameManager.roundsCorrect += 1
+            roundSuccessButton.isHidden = false
+        } else {
+            gameManager.playIncorrectAnswerSound()
+            roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_fail"), for: .normal)
+            roundSuccessButton.isHidden = false
+        }
+    }
+    
+    func appendDatesOfEvents() {
+        // Append the date to the end of the event descriptions so user knows what they got wrong
         guard let firstDescription = firstLabel.attributedText?.string,
             let secondDescription = secondLabel.attributedText?.string,
             let thirdDescription = thirdLabel.attributedText?.string,
@@ -252,18 +295,6 @@ class GameViewController: UIViewController {
         secondLabel.attributedText = gameManager.getDateString(eventDescription: secondDescription)
         thirdLabel.attributedText = gameManager.getDateString(eventDescription: thirdDescription)
         fourthLabel.attributedText = gameManager.getDateString(eventDescription: fourthDescription)
-        
-        hintLabel.text = "Tap events to learn more"
-        if isCorrect {
-            gameManager.playCorrectAnswerSound()
-            roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_success"), for: .normal)
-            gameManager.roundsCorrect += 1
-            roundSuccessButton.isHidden = false
-        } else {
-            gameManager.playIncorrectAnswerSound()
-            roundSuccessButton.setBackgroundImage(UIImage(named: "next_round_fail"), for: .normal)
-            roundSuccessButton.isHidden = false
-        }
     }
     
     @objc func displayCountdown() {

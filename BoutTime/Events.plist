@@ -90,5 +90,117 @@
 		<key>date</key>
 		<date>1776-12-26T02:04:13Z</date>
 	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Louisiana_Purchase</string>
+		<key>description</key>
+		<string>THe United States aquires the Louisiana territory from France</string>
+		<key>date</key>
+		<date>1803-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Quebec_City</string>
+		<key>description</key>
+		<string>French found Quebec City</string>
+		<key>date</key>
+		<date>1608-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Erik_the_Red</string>
+		<key>description</key>
+		<string>Erik the Red founded a colony on Greenland</string>
+		<key>date</key>
+		<date>1000-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Christopher_Columbus</string>
+		<key>description</key>
+		<string>Columbus reached land in the Bahamas.</string>
+		<key>date</key>
+		<date>1492-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/American_Revolution</string>
+		<key>description</key>
+		<string>Colonists rebel against the crown in the American Revolution</string>
+		<key>date</key>
+		<date>1765-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Mexican_War_of_Independence</string>
+		<key>description</key>
+		<string>Miguel Hidalgo starts the Mexican War of Independence</string>
+		<key>date</key>
+		<date>1810-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/War_of_1812</string>
+		<key>description</key>
+		<string>Tecumseh helps the British to block an American attempt to seize Canada</string>
+		<key>date</key>
+		<date>1812-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Dominion_of_Newfoundland</string>
+		<key>description</key>
+		<string>The British colony of Newfoundland became a dominion</string>
+		<key>date</key>
+		<date>1907-12-26T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Second_French_intervention_in_Mexico</string>
+		<key>description</key>
+		<string>France invades Mexico for a second time</string>
+		<key>date</key>
+		<date>1861-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Conscription_Crisis_of_1917</string>
+		<key>description</key>
+		<string>Riots broke out on the streets of Montreal in the Conscription Crisis</string>
+		<key>date</key>
+		<date>1917-12-26T02:04:17Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire</string>
+		<key>description</key>
+		<string>The Spanish conquer the Aztec Empire</string>
+		<key>date</key>
+		<date>1519-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Champ_(folklore)</string>
+		<key>description</key>
+		<string>Samuel de Champlain claims to see a monster in Lake Champlain</string>
+		<key>date</key>
+		<date>1609-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Republic_of_Texas</string>
+		<key>description</key>
+		<string> English-speaking region of Texas declares itself the Republic of Texas</string>
+		<key>date</key>
+		<date>1836-12-26T02:04:13Z</date>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Mexican–American_War</string>
+		<key>description</key>
+		<string>A war breaks out between America and Mexico over annexation of Texas</string>
+		<key>date</key>
+		<date>1846-12-26T02:04:13Z</date>
+	</dict>
 </array>
 </plist>
